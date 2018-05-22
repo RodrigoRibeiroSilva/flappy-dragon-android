@@ -6,6 +6,6 @@ package com.android.flappydragon;
 
 public enum GameState {
 
-    PAUSED, STARTED, GHOSTFORM, GAMEOVER, RESTART;
+    PAUSED, STARTED, TEMPORALFORM, GAMEOVER, RESTART;
 
 }
