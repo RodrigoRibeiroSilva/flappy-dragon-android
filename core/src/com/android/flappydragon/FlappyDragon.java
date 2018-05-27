@@ -1,6 +1,8 @@
 package com.android.flappydragon;
 
+import com.android.flappydragon.scenes.MainMenu;
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -17,7 +19,10 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import java.util.Random;
 
 
-public class FlappyDragon extends ApplicationAdapter {
+public class FlappyDragon extends Game {
+
+    public boolean screnPerspective = true;
+    public boolean gamePerspective = false;
 
     //TODO Atributos para configurar diferentes resoluções
     private OrthographicCamera camera;
@@ -26,14 +31,14 @@ public class FlappyDragon extends ApplicationAdapter {
     private final float VIRTUAL_HEIGHT = 1024;
 
 	//TODO Componentes do jogo
-	private SpriteBatch batch;
+	public SpriteBatch batch;
 	private ShapeRenderer shape;
 	private Texture[] dragonAnimation;
     private Texture[] energyAnimation;
-	private Texture backGround;
+	public Texture backGround;
 	private Texture topMountain;
 	private Texture bottomMountain;
-	private BitmapFont font;
+	public BitmapFont font;
 	private BitmapFont stateMessage;
     private BitmapFont temportalModMessage;
 
@@ -46,8 +51,8 @@ public class FlappyDragon extends ApplicationAdapter {
 
 	//TODO Configurações do jogo
 	private float deltaTime;
-    private float displayHeight;
-    private float displayWidth;
+    public float displayHeight;
+    public float displayWidth;
     private Random randomNumber = new Random();
     private int score = 0;
     private  boolean scoreFlag = false;
@@ -89,6 +94,8 @@ public class FlappyDragon extends ApplicationAdapter {
 
     @Override
 	public void create () {
+
+        setScreen(new MainMenu(this));
 
 	    //TODO Configurações da camera
         camera = new OrthographicCamera();
@@ -156,124 +163,124 @@ public class FlappyDragon extends ApplicationAdapter {
         topMountainCollisionArea = new Rectangle();
         bottomMountainCollisionArea = new Rectangle();
         timeEnergyArea = new Circle();
+
 	}
 
 	@Override
 	public void render () {
 
         deltaTime = Gdx.graphics.getDeltaTime();
-
         energyVariableHorizontalPosition -= deltaTime * 300;
+        gamePerspective = true;
 
+        if(screnPerspective){
+            super.render();
+        }else if (gamePerspective) {
+            if (gameState.equals(GameState.PAUSED)) {
+                drawFramePaused();
+                dragonStartHorizontalPosition = displayWidth / 2;
+                dragonStartVerticalPosition = displayHeight / 2;
+                mountainVariableHorizontalPosition = displayWidth;
+                energyVariableHorizontalPosition = displayWidth + (int) timeEnergyArea.area();
+                score = 0;
 
-		if(gameState.equals(GameState.PAUSED)){
-		    drawFramePaused();
-            dragonStartHorizontalPosition = displayWidth / 2;
-            dragonStartVerticalPosition =  displayHeight / 2;
-            mountainVariableHorizontalPosition = displayWidth;
-            energyVariableHorizontalPosition = displayWidth + (int) timeEnergyArea.area();
-		    score = 0;
-
-			if(Gdx.input.justTouched()){
-				gameState = GameState.STARTED;
-			}
-		}else if (gameState.equals(GameState.STARTED)){
-
-            mountainVariableHorizontalPosition -= deltaTime * normalTime;
-
-		    drawFrameStarted();
-			chkTreePosition();
-            chkEnergyPosition();
-            chkTemporalMod();
-            isCollision();
-            energyCollision();
-			gameScore();
-			dragonFall();
-			if (Gdx.input.isTouched()) {
-				dragonFly();
-			}
-
-		}else if (gameState.equals(GameState.GAMEOVER)){
-            dragonFall();
-            drawFrameStarted();
-            if( dragonStartVerticalPosition <= 0 ){
-                gameState = GameState.RESTART;
-
-            }
-        }else if (gameState.equals(GameState.RESTART)){
-            if (Gdx.input.isTouched()) {
-                gameState = GameState.PAUSED;
-            }
-        }else if (gameState.equals(GameState.TEMPORALFORM)){
-
-            mountainVariableHorizontalPosition -= deltaTime * temporalMod;
-
-            drawFrameStarted();
-            chkTreePosition();
-            chkEnergyPosition();
-            chkTemporalMod();
-            isCollision();
-            energyCollision();
-            gameScore();
-            dragonFall();
-
-            if(!temporalTimeFlag) {
-                timeSeconds += Gdx.graphics.getRawDeltaTime();
-                if (timeSeconds > period) {
-                    timeSeconds = 0;
+                if (Gdx.input.justTouched()) {
                     gameState = GameState.STARTED;
-                    temporalTimeFlag = true;
                 }
+            } else if (gameState.equals(GameState.STARTED)) {
+
+                mountainVariableHorizontalPosition -= deltaTime * normalTime;
+
+                drawFrameStarted();
+                chkTreePosition();
+                chkEnergyPosition();
+                chkTemporalMod();
+                isCollision();
+                energyCollision();
+                gameScore();
+                dragonFall();
+                if (Gdx.input.isTouched()) {
+                    dragonFly();
+                }
+
+            } else if (gameState.equals(GameState.GAMEOVER)) {
+                dragonFall();
+                drawFrameStarted();
+                if (dragonStartVerticalPosition <= 0) {
+                    gameState = GameState.RESTART;
+
+                }
+            } else if (gameState.equals(GameState.RESTART)) {
+                if (Gdx.input.isTouched()) {
+                    gameState = GameState.PAUSED;
+                }
+            } else if (gameState.equals(GameState.TEMPORALFORM)) {
+
+                mountainVariableHorizontalPosition -= deltaTime * temporalMod;
+
+                drawFrameStarted();
+                chkTreePosition();
+                chkEnergyPosition();
+                chkTemporalMod();
+                isCollision();
+                energyCollision();
+                gameScore();
+                dragonFall();
+
+                if (!temporalTimeFlag) {
+                    timeSeconds += Gdx.graphics.getRawDeltaTime();
+                    if (timeSeconds > period) {
+                        timeSeconds = 0;
+                        gameState = GameState.STARTED;
+                        temporalTimeFlag = true;
+                    }
+                }
+
+                if (Gdx.input.isTouched()) {
+                    dragonFly();
+                }
+
             }
 
-            if (Gdx.input.isTouched()) {
-                dragonFly();
-            }
+            //TODO Configurar dados de projeção da câmera
+            batch.setProjectionMatrix(camera.combined);
 
-        }
-
-        //TODO Configurar dados de projeção da câmera
-        batch.setProjectionMatrix( camera.combined );
-
-        //TODO Renderiza os componentes do jogo
-        batch.begin();
+            //TODO Renderiza os componentes do jogo
+            batch.begin();
 
             batch.draw(backGround, 0, 0, displayWidth, displayHeight);
             batch.draw(topMountain, mountainVariableHorizontalPosition, (displayHeight / 2) + (spaceMountain / 2) + (randomMountainHeight));
             batch.draw(bottomMountain, mountainVariableHorizontalPosition, ((displayHeight / 2) - bottomMountain.getHeight()) - (spaceMountain / 2) + (randomMountainHeight));
             batch.draw(dragonAnimation[(int) dragonFrameVariation], dragonStartHorizontalPosition - (dragonWidth / 2), dragonStartVerticalPosition);
-            batch.draw(energyAnimation[(int) drawFrameEnergy()], energyVariableHorizontalPosition - timeEnergyArea.radius, (((displayHeight - (topMountainCollisionArea.getHeight() - bottomMountainCollisionArea.getHeight()))) / 2 ) - timeEnergyArea.radius);
+            batch.draw(energyAnimation[(int) drawFrameEnergy()], energyVariableHorizontalPosition - timeEnergyArea.radius, (((displayHeight - (topMountainCollisionArea.getHeight() - bottomMountainCollisionArea.getHeight()))) / 2) - timeEnergyArea.radius);
             font.draw(batch, "Score: " + String.valueOf(score), displayWidth - displayWidth + 10, displayHeight - 20);
 
-            if(gameState.equals(GameState.GAMEOVER)){
-                stateMessage.draw(batch, "GAME OVER" ,0, displayHeight / 2 , displayWidth, Align.center, true);
-            }
-            else if(gameState.equals(GameState.TEMPORALFORM)){
-                temportalModMessage.draw(batch, "Slow Form: " + String.valueOf((int) timeSeconds) ,displayWidth - displayWidth + 10, displayHeight - 75 );
-            }
-            else if( gameState.equals(GameState.RESTART)){
-                stateMessage.draw(batch, "Click\nto\nRestart!", 0, displayHeight / 2 , displayWidth, Align.center, true);
+            if (gameState.equals(GameState.GAMEOVER)) {
+                stateMessage.draw(batch, "GAME OVER", 0, displayHeight / 2, displayWidth, Align.center, true);
+            } else if (gameState.equals(GameState.TEMPORALFORM)) {
+                temportalModMessage.draw(batch, "Slow Form: " + String.valueOf((int) timeSeconds), displayWidth - displayWidth + 10, displayHeight - 75);
+            } else if (gameState.equals(GameState.RESTART)) {
+                stateMessage.draw(batch, "Click\nto\nRestart!", 0, displayHeight / 2, displayWidth, Align.center, true);
             }
 
-        batch.end();
+            batch.end();
 
-        //TODO Inicializando as formas para as colisões
-        dragonCollisionArea.set( dragonStartHorizontalPosition - (dragonWidth / 2), dragonStartVerticalPosition, dragonWidth, dragonHeight);
-        topMountainCollisionArea.set(mountainVariableHorizontalPosition, (displayHeight / 2) + (spaceMountain / 2) + (randomMountainHeight), topMountain.getWidth(), topMountain.getHeight() );
-        bottomMountainCollisionArea.set(mountainVariableHorizontalPosition, (displayHeight / 2) - (bottomMountain.getHeight()) - (spaceMountain / 2) + (randomMountainHeight) , bottomMountain.getWidth(), bottomMountain.getHeight() );
-        timeEnergyArea.set(energyVariableHorizontalPosition, ((displayHeight - (topMountainCollisionArea.getHeight() - bottomMountainCollisionArea.getHeight()))) / 2, 30);
-
-
-
-        //TODO Desenha as formas de colisão
-                //shape.begin( ShapeRenderer.ShapeType.Filled );
-                //shape.rect(dragonCollisionArea.x, dragonCollisionArea.y, dragonCollisionArea.width, dragonCollisionArea.height);
-                //shape.rect(topMountainCollisionArea.x, topMountainCollisionArea.y, topMountainCollisionArea.width, topMountainCollisionArea.height);
-                //shape.rect(bottomMountainCollisionArea.x, bottomMountainCollisionArea.y, bottomMountainCollisionArea.width, bottomMountainCollisionArea.height);
-                //shape.circle(energyVariableHorizontalPosition, ((displayHeight - (topMountainCollisionArea.getHeight() - bottomMountainCollisionArea.getHeight()))) / 2, 30);
-                //shape.end();
+            //TODO Inicializando as formas para as colisões
+            dragonCollisionArea.set(dragonStartHorizontalPosition - (dragonWidth / 2), dragonStartVerticalPosition, dragonWidth, dragonHeight);
+            topMountainCollisionArea.set(mountainVariableHorizontalPosition, (displayHeight / 2) + (spaceMountain / 2) + (randomMountainHeight), topMountain.getWidth(), topMountain.getHeight());
+            bottomMountainCollisionArea.set(mountainVariableHorizontalPosition, (displayHeight / 2) - (bottomMountain.getHeight()) - (spaceMountain / 2) + (randomMountainHeight), bottomMountain.getWidth(), bottomMountain.getHeight());
+            timeEnergyArea.set(energyVariableHorizontalPosition, ((displayHeight - (topMountainCollisionArea.getHeight() - bottomMountainCollisionArea.getHeight()))) / 2, 30);
 
 
+            //TODO Desenha as formas de colisão
+            //shape.begin( ShapeRenderer.ShapeType.Filled );
+            //shape.rect(dragonCollisionArea.x, dragonCollisionArea.y, dragonCollisionArea.width, dragonCollisionArea.height);
+            //shape.rect(topMountainCollisionArea.x, topMountainCollisionArea.y, topMountainCollisionArea.width, topMountainCollisionArea.height);
+            //shape.rect(bottomMountainCollisionArea.x, bottomMountainCollisionArea.y, bottomMountainCollisionArea.width, bottomMountainCollisionArea.height);
+            //shape.circle(energyVariableHorizontalPosition, ((displayHeight - (topMountainCollisionArea.getHeight() - bottomMountainCollisionArea.getHeight()))) / 2, 30);
+            //shape.end();
+
+        }
 	}
 
 	//TODO Renderiza o bater das asas do Dragão antes do jogo começar
