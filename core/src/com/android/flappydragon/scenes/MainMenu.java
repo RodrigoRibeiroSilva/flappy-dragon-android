@@ -2,7 +2,6 @@ package com.android.flappydragon.scenes;
 
 import com.android.flappydragon.FlappyDragon;
 import com.android.flappydragon.User;
-import com.android.flappydragon.webservice.Request;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Net;
 import com.badlogic.gdx.Screen;
@@ -76,8 +75,8 @@ public class MainMenu implements Screen{
         Label user = new Label("User", skin);
         Label senha = new Label("Password", skin);
         Label gameTitle = new Label("FLAPPY DRAGON", skin);
-        TextField fieldUser = new TextField("", skin);
-        TextField fieldSenha = new TextField("", skin);
+        final TextField fieldUser = new TextField("", skin);
+        final TextField fieldSenha = new TextField("", skin);
         TextButton submit = new TextButton("Submit" , skin);
         user.setFontScale(2);
         senha.setFontScale(2);
@@ -107,25 +106,24 @@ public class MainMenu implements Screen{
         submit.addListener( new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                User userLogin = new User("Arc", "123", 0);
+                User userLogin = new User(fieldUser.getText(), fieldSenha.getText(), 0);
 
                 HttpRequestBuilder requestBuilder = new HttpRequestBuilder();
-                Net.HttpRequest request = requestBuilder.newRequest().method(Net.HttpMethods.GET).url("https://api-android-node.herokuapp.com/User").build();
+                Net.HttpRequest request = requestBuilder.newRequest().method(Net.HttpMethods.GET).url("https://api-android-node.herokuapp.com/User/" + fieldUser.getText()).build();
                 Gdx.net.sendHttpRequest(request, new Net.HttpResponseListener() {
 
                     public void handleHttpResponse(Net.HttpResponse httpResponse) {
 
                         try {
 
-                            int statusCode = httpResponse.getStatus().getStatusCode();
-                            if(statusCode == 200) {
-
-                                Gdx.app.log("Sucesso: " , "Deu bom");
-                                Gdx.app.log("MSG", httpResponse.getResultAsString());
-                                return;
-                            }else{
-                                String responseJson = httpResponse.getResultAsString();
-                                Gdx.app.log("MSG", httpResponse.getResultAsString());
+                            if(httpResponse.getResultAsString().equals("[]")){
+                                Gdx.app.log("Erro : ", "Request Failed Completely");
+                            }
+                            else{
+                                game.screnPerspective = false;
+                                game.gamePerspective = true;
+                                game.render();
+                                dispose();
                             }
 
                         }
