@@ -2,7 +2,7 @@ package com.android.flappydragon.scenes;
 
 import com.android.flappydragon.FlappyDragon;
 import com.android.flappydragon.User;
-import com.android.flappydragon.webservice.HttpRequest;
+import com.android.flappydragon.webservice.Request;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Net;
 import com.badlogic.gdx.Screen;
@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.net.HttpRequestBuilder;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -22,7 +23,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
-import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
@@ -108,13 +108,52 @@ public class MainMenu implements Screen{
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 User userLogin = new User("Arc", "123", 0);
-                HttpRequest request = new HttpRequest();
-                request.sendRequest( userLogin ,"POST");
 
-                game.screnPerspective = false;
+                HttpRequestBuilder requestBuilder = new HttpRequestBuilder();
+                Net.HttpRequest request = requestBuilder.newRequest().method(Net.HttpMethods.GET).url("https://api-android-node.herokuapp.com/User").build();
+                Gdx.net.sendHttpRequest(request, new Net.HttpResponseListener() {
+
+                    public void handleHttpResponse(Net.HttpResponse httpResponse) {
+
+                        try {
+
+                            int statusCode = httpResponse.getStatus().getStatusCode();
+                            if(statusCode == 200) {
+
+                                Gdx.app.log("Sucesso: " , "Deu bom");
+                                Gdx.app.log("MSG", httpResponse.getResultAsString());
+                                return;
+                            }else{
+                                String responseJson = httpResponse.getResultAsString();
+                                Gdx.app.log("MSG", httpResponse.getResultAsString());
+                            }
+
+                        }
+                        catch(Exception exception) {
+                            exception.printStackTrace();
+                        }
+                    }
+
+                    public void failed(Throwable t) {
+                        System.out.println("Request Failed Completely");
+                        Gdx.app.log("Erro1: " , "Request Failed Completely");
+                    }
+
+                    @Override
+                    public void cancelled() {
+                        System.out.println("request cancelled");
+                        Gdx.app.log("Erro2: " , "request cancelled");
+                    }
+
+                });
+
+               /* Request request = new Request();
+                request.sendRequest( userLogin ,"POST");
+*/
+               /* game.screnPerspective = false;
                 game.gamePerspective = true;
                 game.render();
-                dispose();
+                dispose();*/
             };
         });
 

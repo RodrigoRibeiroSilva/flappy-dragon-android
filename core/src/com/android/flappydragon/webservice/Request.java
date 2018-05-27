@@ -8,10 +8,10 @@ import com.badlogic.gdx.utils.Json;
  * Created by Rodrigo on 26/05/2018.
  */
 
-public class HttpRequest {
+public class Request {
 
 
-    public HttpRequest(){
+    public Request(){
 
     }
 
@@ -23,7 +23,7 @@ public class HttpRequest {
         String requestJson = json.toJson(requestObject); // this is just an example
 
         Net.HttpRequest request = new Net.HttpRequest(method);
-        final String url = "some url";
+        final String url = "https://api-android-node.herokuapp.com/user";
         request.setUrl(url);
 
         request.setContent(requestJson);
@@ -39,7 +39,7 @@ public class HttpRequest {
 
                     int statusCode = httpResponse.getStatus().getStatusCode();
                     if(statusCode != 200) {
-                        System.out.println("Request Failed");
+                        System.out.println("Request Failed 1");
                         return;
                     }else{
                         String responseJson = httpResponse.getResultAsString();
