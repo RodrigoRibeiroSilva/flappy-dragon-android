@@ -12,6 +12,8 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+
+import com.badlogic.gdx.net.HttpParametersUtils;
 import com.badlogic.gdx.net.HttpRequestBuilder;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -24,6 +26,9 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class MainMenu implements Screen{
@@ -104,20 +109,49 @@ public class MainMenu implements Screen{
         Gdx.input.setInputProcessor(stage);
 
         submit.addListener( new ClickListener() {
+
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                User userLogin = new User(fieldUser.getText(), fieldSenha.getText(), 0);
+                final User userLogin = new User(fieldUser.getText(), fieldSenha.getText(), 0);
 
                 HttpRequestBuilder requestBuilder = new HttpRequestBuilder();
-                Net.HttpRequest request = requestBuilder.newRequest().method(Net.HttpMethods.GET).url("https://api-android-node.herokuapp.com/User/" + fieldUser.getText()).build();
+                Net.HttpRequest request = requestBuilder.newRequest().method(Net.HttpMethods.GET).url("https://api-android-node.herokuapp.com/User/" + userLogin.getNickName()).build();
                 Gdx.net.sendHttpRequest(request, new Net.HttpResponseListener() {
 
                     public void handleHttpResponse(Net.HttpResponse httpResponse) {
 
                         try {
+                            String var = httpResponse.getResultAsString();
+                            Gdx.app.log("Resultado",var);
+                            if(var.equals("[]")){
+                                Map parameters = new HashMap();
+                                parameters.put("username", userLogin.getNickName());
+                                parameters.put("password" ,  userLogin.getPassword());
 
-                            if(httpResponse.getResultAsString().equals("[]")){
-                                Gdx.app.log("Erro : ", "Request Failed Completely");
+
+                                Net.HttpRequest httpPost = new Net.HttpRequest(Net.HttpMethods.POST);
+                                httpPost.setUrl("https://api-android-node.herokuapp.com/User/");
+                                httpPost.setContent(HttpParametersUtils.convertHttpParameters(parameters));
+
+                                Gdx.net.sendHttpRequest(httpPost, new Net.HttpResponseListener() {
+                                    @Override
+                                    public void handleHttpResponse(Net.HttpResponse httpResponse) {
+                                        game.screnPerspective = false;
+                                        game.gamePerspective = true;
+                                        game.render();
+                                        dispose();
+                                    }
+
+                                    @Override
+                                    public void failed(Throwable t) {
+                                        Gdx.app.log("Erro", t.getMessage());
+                                    }
+
+                                    @Override
+                                    public void cancelled() {
+                                        Gdx.app.log("Cancelado", "Cancelou");
+                                    }
+                                });
                             }
                             else{
                                 game.screnPerspective = false;
@@ -145,13 +179,6 @@ public class MainMenu implements Screen{
 
                 });
 
-               /* Request request = new Request();
-                request.sendRequest( userLogin ,"POST");
-*/
-               /* game.screnPerspective = false;
-                game.gamePerspective = true;
-                game.render();
-                dispose();*/
             };
         });
 
