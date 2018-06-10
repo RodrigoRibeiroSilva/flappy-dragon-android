@@ -24,6 +24,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
+import com.badlogic.gdx.utils.Json;
+import com.badlogic.gdx.utils.JsonReader;
+import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
@@ -121,8 +124,12 @@ public class MainMenu implements Screen{
                     public void handleHttpResponse(Net.HttpResponse httpResponse) {
 
                         try {
+                            //RESULTADO DO GET DA API
                             String var = httpResponse.getResultAsString();
+
+
                             Gdx.app.log("Resultado",var);
+                            //SE O RESULTADO FOR VAZIO CHAMA O MÉTODO POST E CRIA A CONTA
                             if(var.equals("[]")){
                                 Map parameters = new HashMap();
                                 parameters.put("username", userLogin.getNickName());
@@ -153,11 +160,34 @@ public class MainMenu implements Screen{
                                     }
                                 });
                             }
+                            //PEGA OS RESULTADOS DA REQUISIÇÃO E PASSA PARA UMA CLASSE
                             else{
-                                game.screnPerspective = false;
-                                game.gamePerspective = true;
-                                game.render();
-                                dispose();
+
+                                //PASSANDO O RESULTADO DA REQUISIÇÃO DA API PARA PODER PEGAR OS VALORES
+                                JsonValue user = new JsonReader().parse(var);
+
+                                //CRIANDO UM USUÁRIO E PASSANDO OS VALORES DA REQUISIÇÃO PARA OS ATRIBUTOS DA CLASSE
+                                User userJson = new User("", "", 0 );
+                                userJson.setScore(user.child.child.asInt());
+                                userJson.setNickName(user.child.child.next.next.asString());
+                                userJson.setPassword(user.child.child.next.next.next.asString());
+
+                                //SE O PASSWORD DA REQUISIÇÃO FOR IGUAL AO DIGITADO ELE CHAMA O JOGO
+                                if(userLogin.getPassword().equals(userJson.getPassword())){
+                                    userLogin.setScore(userJson.getScore());
+                                    Gdx.app.log("user", userLogin.getNickName());
+                                    Gdx.app.log("Password", userLogin.getPassword());
+                                    Gdx.app.log("Score", String.valueOf(userLogin.getScore()));
+                                    game.screnPerspective = false;
+                                    game.gamePerspective = true;
+                                    game.render();
+                                    dispose();
+                                }
+                                else{
+                                    //Mostrar mensagem de password Errado
+                                    Gdx.app.log("PasswordErrado", "Password Errado");
+                                }
+
                             }
 
                         }
