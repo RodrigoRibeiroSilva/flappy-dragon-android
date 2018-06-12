@@ -6,20 +6,23 @@ package com.android.flappydragon;
 
 public class User {
 
-    private int score;
+    private Double score;
     private String nickName, password;
 
-    public User (String nickName, String password, int score){
+    public User (){
+
+    }
+    public User (String nickName, String password, Double score){
         this.nickName = nickName;
         this.password = password;
         this.score = score;
     }
 
-    public int getScore() {
+    public Double getScore() {
         return score;
     }
 
-    public void setScore(int score) {
+    public void setScore(Double score) {
         this.score = score;
     }
 
