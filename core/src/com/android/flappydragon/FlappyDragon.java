@@ -1,9 +1,9 @@
 package com.android.flappydragon;
 
-import com.android.flappydragon.scenes.MainMenu;
-import com.badlogic.gdx.ApplicationAdapter;
+import com.android.flappydragon.scenes.Login;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Net;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -12,10 +12,14 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.net.HttpParametersUtils;
+import com.badlogic.gdx.net.HttpRequestBuilder;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 
@@ -23,6 +27,7 @@ public class FlappyDragon extends Game {
 
     public boolean screnPerspective = true;
     public boolean gamePerspective = false;
+    public User logedUser;
 
     //TODO Atributos para configurar diferentes resoluções
     private OrthographicCamera camera;
@@ -41,6 +46,7 @@ public class FlappyDragon extends Game {
 	public BitmapFont font;
 	private BitmapFont stateMessage;
     private BitmapFont temportalModMessage;
+    private  BitmapFont topScoreMessage;
 
 	//Todo figuras para colisões
 	private Rectangle dragonCollisionArea;
@@ -54,7 +60,7 @@ public class FlappyDragon extends Game {
     public float displayHeight;
     public float displayWidth;
     private Random randomNumber = new Random();
-    private int score = 0;
+    private Double score = 0.0;
     private  boolean scoreFlag = false;
     private int normalTime = 200;
 
@@ -95,7 +101,9 @@ public class FlappyDragon extends Game {
     @Override
 	public void create () {
 
-        setScreen(new MainMenu(this));
+        setScreen(new Login(this));
+
+        logedUser = new User();
 
 	    //TODO Configurações da camera
         camera = new OrthographicCamera();
@@ -135,6 +143,9 @@ public class FlappyDragon extends Game {
 
         stateMessage = new BitmapFont(Gdx.files.internal("font.fnt"));
         stateMessage.getData().setScale(2);
+
+        topScoreMessage = new BitmapFont(Gdx.files.internal("font.fnt"));
+        topScoreMessage.getData().setScale(2);
 
         temportalModMessage = new BitmapFont(Gdx.files.internal("font.fnt"));
         temportalModMessage.getData().setScale(1);
@@ -177,12 +188,14 @@ public class FlappyDragon extends Game {
             super.render();
         }else if (gamePerspective) {
             if (gameState.equals(GameState.PAUSED)) {
+                score = 0.0;
+                normalTime = 200;
                 drawFramePaused();
                 dragonStartHorizontalPosition = displayWidth / 2;
                 dragonStartVerticalPosition = displayHeight / 2;
                 mountainVariableHorizontalPosition = displayWidth;
                 energyVariableHorizontalPosition = displayWidth + (int) timeEnergyArea.area();
-                score = 0;
+                score = 0.0;
 
                 if (Gdx.input.justTouched()) {
                     gameState = GameState.STARTED;
@@ -253,13 +266,53 @@ public class FlappyDragon extends Game {
             batch.draw(bottomMountain, mountainVariableHorizontalPosition, ((displayHeight / 2) - bottomMountain.getHeight()) - (spaceMountain / 2) + (randomMountainHeight));
             batch.draw(dragonAnimation[(int) dragonFrameVariation], dragonStartHorizontalPosition - (dragonWidth / 2), dragonStartVerticalPosition);
             batch.draw(energyAnimation[(int) drawFrameEnergy()], energyVariableHorizontalPosition - timeEnergyArea.radius, (((displayHeight - (topMountainCollisionArea.getHeight() - bottomMountainCollisionArea.getHeight()))) / 2) - timeEnergyArea.radius);
-            font.draw(batch, "Score: " + String.valueOf(score), displayWidth - displayWidth + 10, displayHeight - 20);
+            font.draw(batch, "Score: " + String.valueOf(score.intValue()), displayWidth - displayWidth + 10, displayHeight - 20);
 
             if (gameState.equals(GameState.GAMEOVER)) {
                 stateMessage.draw(batch, "GAME OVER", 0, displayHeight / 2, displayWidth, Align.center, true);
             } else if (gameState.equals(GameState.TEMPORALFORM)) {
                 temportalModMessage.draw(batch, "Slow Form: " + String.valueOf((int) timeSeconds), displayWidth - displayWidth + 10, displayHeight - 75);
             } else if (gameState.equals(GameState.RESTART)) {
+                if(score > logedUser.getScore()){
+                    logedUser.setScore(score);
+
+                    Map parameters = new HashMap();
+                    String scoreString = logedUser.getScore().toString();
+                    parameters.put("score", scoreString);
+
+                    HttpRequestBuilder requestBuilder = new HttpRequestBuilder();
+                    Net.HttpRequest request = requestBuilder.newRequest().method(Net.HttpMethods.PUT).url("https://api-android-node.herokuapp.com/User/" + logedUser.getNickName()).build();
+                    request.setContent(HttpParametersUtils.convertHttpParameters(parameters));
+
+                    Gdx.net.sendHttpRequest(request, new Net.HttpResponseListener() {
+
+                        public void handleHttpResponse(Net.HttpResponse httpResponse) {
+
+                            try {
+                                //TODO RESULTADO DO GET DA API
+                                String var = httpResponse.getResultAsString();
+                                Gdx.app.log("Resultado",var);
+
+                            }
+                            catch(Exception exception) {
+                                exception.printStackTrace();
+                            }
+                        }
+
+                        public void failed(Throwable t) {
+                            System.out.println("Request Failed Completely");
+                            Gdx.app.log("Erro1: " , "Request Failed Completely");
+                        }
+
+                        @Override
+                        public void cancelled() {
+                            System.out.println("request cancelled");
+                            Gdx.app.log("Erro2: " , "request cancelled");
+                        }
+
+                    });
+                }
+                topScoreMessage.draw(batch, "Top Score: " + String.valueOf(logedUser.getScore().intValue()), 0, displayHeight / 2 + 100, displayWidth, Align.center, true);
                 stateMessage.draw(batch, "Click\nto\nRestart!", 0, displayHeight / 2, displayWidth, Align.center, true);
             }
 
@@ -270,15 +323,6 @@ public class FlappyDragon extends Game {
             topMountainCollisionArea.set(mountainVariableHorizontalPosition, (displayHeight / 2) + (spaceMountain / 2) + (randomMountainHeight), topMountain.getWidth(), topMountain.getHeight());
             bottomMountainCollisionArea.set(mountainVariableHorizontalPosition, (displayHeight / 2) - (bottomMountain.getHeight()) - (spaceMountain / 2) + (randomMountainHeight), bottomMountain.getWidth(), bottomMountain.getHeight());
             timeEnergyArea.set(energyVariableHorizontalPosition, ((displayHeight - (topMountainCollisionArea.getHeight() - bottomMountainCollisionArea.getHeight()))) / 2, 30);
-
-
-            //TODO Desenha as formas de colisão
-            //shape.begin( ShapeRenderer.ShapeType.Filled );
-            //shape.rect(dragonCollisionArea.x, dragonCollisionArea.y, dragonCollisionArea.width, dragonCollisionArea.height);
-            //shape.rect(topMountainCollisionArea.x, topMountainCollisionArea.y, topMountainCollisionArea.width, topMountainCollisionArea.height);
-            //shape.rect(bottomMountainCollisionArea.x, bottomMountainCollisionArea.y, bottomMountainCollisionArea.width, bottomMountainCollisionArea.height);
-            //shape.circle(energyVariableHorizontalPosition, ((displayHeight - (topMountainCollisionArea.getHeight() - bottomMountainCollisionArea.getHeight()))) / 2, 30);
-            //shape.end();
 
         }
 	}
@@ -348,7 +392,7 @@ public class FlappyDragon extends Game {
     //TODO Modifica a velocidade do ambiente caso esteja na forma temporal
     private void chkTemporalMod(){
       if (gameState.equals(GameState.STARTED)){
-            normalTime += score / 10;
+            normalTime += score / 5;
         }
     }
 

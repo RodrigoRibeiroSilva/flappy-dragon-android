@@ -1,0 +1,170 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:2:1-34:12
+INJECTED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:2:1-34:12
+INJECTED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:2:1-34:12
+INJECTED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:2:1-34:12
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\7f0f5c26a0762e4a8edfd7e38527dbf6\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.0.aar\ddaac058513e4d3de6a4d31799e097eb\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\8e8aecc70f02c0e5c57a6d9651ebb043\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\c6d74e0f8b7d6540efbad33fd2d68307\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\a2f7c807c8c233ed250e4bbbfb6a24e4\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\2c1059aac663d0611478c28ec33fe774\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\81b9aa6d8c283c84bfda2eb873e27f24\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\3ffc12cf75091e276f57996a5a39605a\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\4af73c27b4f4c98508a4d4565a0a1ed3\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\c74457f6bcf6ffd32c34c3dbef91af8f\AndroidManifest.xml:17:1-31:12
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\91aa1128949c777e5ebc3d0c9ffd01f5\AndroidManifest.xml:17:1-30:12
+INJECTED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:2:1-34:12
+INJECTED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:2:1-34:12
+INJECTED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:2:1-34:12
+	package
+		ADDED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:4:5-39
+		INJECTED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml
+		INJECTED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml
+		ADDED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:2:1-34:12
+		INJECTED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml
+	xmlns:tools
+		ADDED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:3:5-51
+	android:versionCode
+		INJECTED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml
+		ADDED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:2:1-34:12
+		INJECTED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:2:11-69
+uses-sdk
+ADDED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:6:5-8:41
+INJECTED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:6:5-8:41
+INJECTED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:6:5-8:41
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\7f0f5c26a0762e4a8edfd7e38527dbf6\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\7f0f5c26a0762e4a8edfd7e38527dbf6\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support.constraint:constraint-layout:1.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.0.aar\ddaac058513e4d3de6a4d31799e097eb\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.0.aar\ddaac058513e4d3de6a4d31799e097eb\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\8e8aecc70f02c0e5c57a6d9651ebb043\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\8e8aecc70f02c0e5c57a6d9651ebb043\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\c6d74e0f8b7d6540efbad33fd2d68307\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\c6d74e0f8b7d6540efbad33fd2d68307\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\a2f7c807c8c233ed250e4bbbfb6a24e4\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\a2f7c807c8c233ed250e4bbbfb6a24e4\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\2c1059aac663d0611478c28ec33fe774\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\2c1059aac663d0611478c28ec33fe774\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\81b9aa6d8c283c84bfda2eb873e27f24\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\81b9aa6d8c283c84bfda2eb873e27f24\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\3ffc12cf75091e276f57996a5a39605a\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\3ffc12cf75091e276f57996a5a39605a\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\4af73c27b4f4c98508a4d4565a0a1ed3\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\4af73c27b4f4c98508a4d4565a0a1ed3\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\c74457f6bcf6ffd32c34c3dbef91af8f\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\c74457f6bcf6ffd32c34c3dbef91af8f\AndroidManifest.xml:21:5-23:58
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\91aa1128949c777e5ebc3d0c9ffd01f5\AndroidManifest.xml:20:5-22:41
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\91aa1128949c777e5ebc3d0c9ffd01f5\AndroidManifest.xml:20:5-22:41
+INJECTED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:6:5-8:41
+INJECTED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:6:5-8:41
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\7f0f5c26a0762e4a8edfd7e38527dbf6\AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		ADDED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:8:9-38
+		INJECTED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml
+		INJECTED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml
+	android:minSdkVersion
+		ADDED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:7:9-34
+		INJECTED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml
+		INJECTED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:10:5-81
+	android:name
+		ADDED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:10:22-78
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:11:5-75
+	android:name
+		ADDED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:11:22-72
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:12:5-80
+	android:name
+		ADDED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:12:22-77
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:13:5-69
+	android:name
+		ADDED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:13:22-66
+application
+ADDED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:15:5-33:19
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\7f0f5c26a0762e4a8edfd7e38527dbf6\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\7f0f5c26a0762e4a8edfd7e38527dbf6\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support.constraint:constraint-layout:1.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.0.aar\ddaac058513e4d3de6a4d31799e097eb\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.0.aar\ddaac058513e4d3de6a4d31799e097eb\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\8e8aecc70f02c0e5c57a6d9651ebb043\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\8e8aecc70f02c0e5c57a6d9651ebb043\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\c6d74e0f8b7d6540efbad33fd2d68307\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\c6d74e0f8b7d6540efbad33fd2d68307\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\a2f7c807c8c233ed250e4bbbfb6a24e4\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\a2f7c807c8c233ed250e4bbbfb6a24e4\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\2c1059aac663d0611478c28ec33fe774\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\2c1059aac663d0611478c28ec33fe774\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\81b9aa6d8c283c84bfda2eb873e27f24\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\81b9aa6d8c283c84bfda2eb873e27f24\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\3ffc12cf75091e276f57996a5a39605a\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\3ffc12cf75091e276f57996a5a39605a\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\4af73c27b4f4c98508a4d4565a0a1ed3\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\4af73c27b4f4c98508a4d4565a0a1ed3\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\c74457f6bcf6ffd32c34c3dbef91af8f\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\c74457f6bcf6ffd32c34c3dbef91af8f\AndroidManifest.xml:25:5-29:19
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\91aa1128949c777e5ebc3d0c9ffd01f5\AndroidManifest.xml:24:5-28:19
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\91aa1128949c777e5ebc3d0c9ffd01f5\AndroidManifest.xml:24:5-28:19
+	android:label
+		ADDED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:19:9-41
+	android:icon
+		ADDED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:18:9-45
+	android:allowBackup
+		ADDED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:17:9-35
+	android:theme
+		ADDED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:20:9-40
+activity#com.android.flappydragon.AndroidLauncher
+ADDED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:22:9-32:20
+	android:screenOrientation
+		ADDED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:26:13-49
+	android:label
+		ADDED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:25:13-45
+	android:configChanges
+		ADDED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:24:13-94
+	android:name
+		ADDED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:23:13-44
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:27:13-31:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:28:17-69
+	android:name
+		ADDED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:28:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:30:17-77
+	android:name
+		ADDED from C:\Users\Rodrigo\AndroidStudioProjects\flappy-dragon-android\android\AndroidManifest.xml:30:27-74
+meta-data#android.support.VERSION
+ADDED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\7f0f5c26a0762e4a8edfd7e38527dbf6\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\8e8aecc70f02c0e5c57a6d9651ebb043\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\8e8aecc70f02c0e5c57a6d9651ebb043\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\c6d74e0f8b7d6540efbad33fd2d68307\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\c6d74e0f8b7d6540efbad33fd2d68307\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\a2f7c807c8c233ed250e4bbbfb6a24e4\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\a2f7c807c8c233ed250e4bbbfb6a24e4\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\2c1059aac663d0611478c28ec33fe774\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\2c1059aac663d0611478c28ec33fe774\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\81b9aa6d8c283c84bfda2eb873e27f24\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\81b9aa6d8c283c84bfda2eb873e27f24\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\3ffc12cf75091e276f57996a5a39605a\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\3ffc12cf75091e276f57996a5a39605a\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\4af73c27b4f4c98508a4d4565a0a1ed3\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\4af73c27b4f4c98508a4d4565a0a1ed3\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\c74457f6bcf6ffd32c34c3dbef91af8f\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\c74457f6bcf6ffd32c34c3dbef91af8f\AndroidManifest.xml:26:9-28:38
+	android:value
+		ADDED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\7f0f5c26a0762e4a8edfd7e38527dbf6\AndroidManifest.xml:28:13-35
+	android:name
+		ADDED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\7f0f5c26a0762e4a8edfd7e38527dbf6\AndroidManifest.xml:27:13-51
+meta-data#android.arch.lifecycle.VERSION
+ADDED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\91aa1128949c777e5ebc3d0c9ffd01f5\AndroidManifest.xml:25:9-27:47
+	android:value
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\91aa1128949c777e5ebc3d0c9ffd01f5\AndroidManifest.xml:27:13-44
+	android:name
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Rodrigo\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\91aa1128949c777e5ebc3d0c9ffd01f5\AndroidManifest.xml:26:13-58

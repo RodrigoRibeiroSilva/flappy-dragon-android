@@ -1,0 +1,4 @@
+#Mon Jun 11 20:45:37 BRT 2018
+base.0=C\:\\Users\\Rodrigo\\AndroidStudioProjects\\flappy-dragon-android\\android\\build\\intermediates\\transforms\\dexMerger\\debug\\7
+path.0=classes.dex
+renamed.0=classes.dex
